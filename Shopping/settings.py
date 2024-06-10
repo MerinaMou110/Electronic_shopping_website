@@ -37,6 +37,7 @@ CSRF_TRUSTED_ORIGINS = ['https://electronic-shopping-website-as07.onrender.com',
 # Application definition
 
 INSTALLED_APPS = [
+    
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -179,7 +180,8 @@ PASSWORD_RESET_TIMEOUT=900          # 900 Sec = 15 Min
 
 CORS_ALLOWED_ORIGINS = [
     
-    "http://127.0.0.1:5501"
+    "http://127.0.0.1:5501",
+     'https://prismatic-taffy-8af93c.netlify.app',
 ]
 
 
