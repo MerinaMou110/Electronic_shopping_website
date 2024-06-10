@@ -31,7 +31,7 @@ class UserRegistrationView(APIView):
         user = serializer.save()
         uid = urlsafe_base64_encode(force_bytes(user.pk))
         token = default_token_generator.make_token(user)
-        link = f'http://127.0.0.1:8000/api/user/activate/{uid}/{token}/'
+        link = f'https://electronic-shopping-website-as07.onrender.com/api/user/activate/{uid}/{token}/'
         email_subject = 'Activate your account'
         email_body = render_to_string('activation_email.html', {'activation_link': link})
         email = EmailMultiAlternatives(email_subject, '', to=[user.email])
