@@ -31,7 +31,7 @@ DEBUG = True
 
 
 ALLOWED_HOSTS = ["*"]
-CSRF_TRUSTED_ORIGINS = ['https://electronic-shopping-website-as07.onrender.com/','https://*.127.0.0.1'] # first part will be your deploy project’s domain name
+CSRF_TRUSTED_ORIGINS = ['https://electronic-shopping-website-as07.onrender.com','https://*.127.0.0.1'] # first part will be your deploy project’s domain name
 
 
 # Application definition
@@ -178,8 +178,7 @@ SIMPLE_JWT = {
 PASSWORD_RESET_TIMEOUT=900          # 900 Sec = 15 Min
 
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000",
-    "http://127.0.0.1:3000",
+    
     "http://127.0.0.1:5501"
 ]
 
