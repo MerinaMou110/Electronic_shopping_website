@@ -46,7 +46,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
      'corsheaders',
      'rest_framework',
-     'rest_framework.authtoken',
+     
      'rest_framework_simplejwt.token_blacklist',
     "authentication",
     "products",
@@ -104,14 +104,7 @@ REST_FRAMEWORK = {
     )
    
 }
-REST_FRAMEWORK = {
-    'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework.authentication.TokenAuthentication',
-    ],
-    'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.IsAuthenticated',
-    ],
-}
+
 # REST_FRAMEWORK = {
 #     'DEFAULT_AUTHENTICATION_CLASSES': (
 #         'rest_framework_simplejwt.authentication.JWTAuthentication',
