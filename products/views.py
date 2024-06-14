@@ -4,6 +4,8 @@ from rest_framework.response import Response
 from rest_framework.parsers import MultiPartParser, FormParser
 from .models import Product, Category
 from .serializers import ProductSerializer, ProductCreateUpdateSerializer, CategorySerializer
+from rest_framework.permissions import IsAuthenticated
+from rest_framework.parsers import MultiPartParser, FormParser, JSONParser
 
 class IsAdminOrSuperadmin(permissions.BasePermission):
     def has_permission(self, request, view):
@@ -34,8 +36,8 @@ class ProductDetailView(generics.RetrieveAPIView):
     permission_classes = [permissions.AllowAny]
 
 class ProductListCreateView(APIView):
-    parser_classes = (MultiPartParser, FormParser)
-    permission_classes = [IsAdminOrSuperadmin]
+    parser_classes = (MultiPartParser, FormParser, JSONParser)
+    permission_classes = [IsAuthenticated]
 
     def get(self, request, format=None):
         products = Product.objects.all()
@@ -49,9 +51,12 @@ class ProductListCreateView(APIView):
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+
+
+
 class ProductRetrieveUpdateDeleteView(APIView):
-    parser_classes = (MultiPartParser, FormParser)
-    permission_classes = [IsAdminOrSuperadmin]
+    parser_classes = (MultiPartParser, FormParser, JSONParser)
+    permission_classes = [IsAuthenticated]
 
     def get_object(self, pk):
         try:
@@ -85,3 +90,4 @@ class ProductRetrieveUpdateDeleteView(APIView):
             return Response(status=status.HTTP_404_NOT_FOUND)
         product.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
+
